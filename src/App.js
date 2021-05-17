@@ -7,12 +7,15 @@ import Trending from './Trending';
 
 function App() {
 
+  
   const [articles, setArticles ] = useState([])
   const [category, setCategory] = useState('home')
+  
+  // console.log("App is rendering", category, articles)
 
   // const chooseTwoArticles = (array) => {
   //   const randomTwoArticles = [];
-  //   for (let i = 0; i < 2; i++) {
+  //   for (let i = 0; i < 4; i++) {
   //     const random = Math.floor(Math.random() * array.length);
   //     randomTwoArticles.push(array[random]);
   //     };
@@ -36,13 +39,22 @@ function App() {
       const data = jsonResponse.results
       
       const sortedNewsData = data.map((newsData)=>{
+        
+        // console.log(newsData)
+
+        let media = {}
+
+        if (newsData.multimedia && newsData.multimedia[0]) {
+          media = newsData.multimedia[0]
+        }
+
         return {
           key:newsData.title,
           title: newsData.title,
           section: newsData.section,
           author:newsData.byline,
-          imgSrc: newsData.multimedia[0].url,
-          imgCaption: newsData.multimedia[0].caption,
+          imgSrc: media.url,
+          imgCaption: media.caption,
           brief: newsData.abstract,
           link: newsData.url
         }
@@ -53,7 +65,7 @@ function App() {
     
   }, [category])
 
-  console.log(articles)
+  // console.log("I am the main article", articles)
     
   
   const handleCategoryChange = (category) => {
@@ -90,7 +102,7 @@ function App() {
             })
           }
         </ul>
-        <Trending />
+        <Trending category={category} />
       </section>    
     </div>
 
