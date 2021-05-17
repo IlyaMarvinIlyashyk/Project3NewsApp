@@ -32,7 +32,7 @@ const Trending = () => {
             <div className="trendingContainer">
                 <h2>{trending.title}</h2>
                 <p>{trending.byline}</p>
-                {/* <img src={trending.media[0]["media-metadata"][2].url} alt={trending.media[0].caption} /> */}
+                <img src={trending.media[0]["media-metadata"][2].url} alt={trending.media[0].caption} />
                 <p>{trending.abstract}</p>
                 <div className="anchorTrending">
                     <a href={trending.url}>Read on!</a>
