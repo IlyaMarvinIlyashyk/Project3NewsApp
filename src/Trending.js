@@ -1,24 +1,29 @@
+import Axios from "axios"
 import { useEffect, useState } from "react"
 
 const Trending = () => {
 
-    const [trending, setTrending] = useState('home')
+    // state for trending
+
+    const [trending, setTrending] = useState("")
+
+    // state for trending period
+
     const [period, setPeriod] = useState(1)
 
-    useEffect (()=>{
+    useEffect (()=>{     
 
-        const url = new URL (`https://api.nytimes.com/svc/mostpopular/v2/viewed/${period}.json`)
-
-        url.search = new URLSearchParams ({
-            'api-key': 'tcPL7kY0JWT8CNTiOo8hfOsJalRUzNNI',
-        });
+        // making another call to the NY Times API, this time to the "most popular, most viewed"
         
-        fetch (url)
-        .then((response)=> response.json())
-        .then((jsonResponse)=>{
-            const data = jsonResponse.results
-
-            
+        Axios({
+            method: 'GET',
+            url: `https://api.nytimes.com/svc/mostpopular/v2/viewed/${period}.json`,
+            params: {
+                'api-key': 'tcPL7kY0JWT8CNTiOo8hfOsJalRUzNNI',
+            }
+        })
+        .then((jsonResponse) => {
+            const data = jsonResponse.data.results
             const randomTrending = data[Math.floor(Math.random()*data.length)]            
             setTrending(randomTrending)
         })
@@ -42,20 +47,31 @@ const Trending = () => {
     }
     else {trendingCaption = "No caption provided."}
 
+    // period and label in a new array
+    
+    const trendingPeriod = [
+            {period: 1, label: "Today"},
+            {period: 7, label: "Week"},
+            {period: 39, label: "Month"},
+        ]
+
+    // handling change in period
+        
     const handlePeriodChange = (value) => {
-        setPeriod(value)
-    }
+            setPeriod(value)
+        }
 
     return(
         <section className="trending">
             <h4>Trending</h4>
-
             <div className="trendingButtons">
-                <button onClick={()=>{handlePeriodChange(1)}}>Today</button>
-                <button onClick={()=>{handlePeriodChange(7)}}>Week</button>
-                <button onClick={()=>{handlePeriodChange(30)}}>Month</button>
+                {
+                trendingPeriod.map(({period, label})=>{
+                    return <button key={`button-${label}`}onClick={() => { handlePeriodChange(period) }}>{label}</button>
+                })
+                }
             </div>
-
+            
             <div className="trendingContainer">
                 <h2>{trending.title}</h2>
                 <p>{trending.byline}</p>
