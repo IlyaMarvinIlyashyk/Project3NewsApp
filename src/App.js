@@ -1,117 +1,28 @@
 import './App.css';
-import { useEffect, useState } from 'react';
 import Header from './Header.js';
-import Article from './Article.js'
-import CategorySelector from './CategorySelector';
+import Articles from './Articles.js'
 import Trending from './Trending';
+import {FaLightbulb} from 'react-icons/fa'
+
 
 function App() {
 
-  
-  const [articles, setArticles ] = useState([])
-  const [category, setCategory] = useState('home')
-  
-  // console.log("App is rendering", category, articles)
-
-  // const chooseTwoArticles = (array) => {
-  //   const randomTwoArticles = [];
-  //   for (let i = 0; i < 4; i++) {
-  //     const random = Math.floor(Math.random() * array.length);
-  //     randomTwoArticles.push(array[random]);
-  //     };
-  //     return randomTwoArticles;
-  //   };
-
-  useEffect(() => {
-    
-    const url = new URL(`https://api.nytimes.com/svc/topstories/v2/${category}.json?`)
-    
-    url.search = new URLSearchParams({
-      'api-key': 'tcPL7kY0JWT8CNTiOo8hfOsJalRUzNNI',
-    });
-    
-    fetch(url)
-    .then((response) => {
-      return response.json()
-    })
-    .then((jsonResponse) => {
-      
-      const data = jsonResponse.results
-      
-      const sortedNewsData = data.map((newsData)=>{
-        
-        // console.log(newsData)
-
-        let media = {}
-
-        if (newsData.multimedia && newsData.multimedia[0]) {
-          media = newsData.multimedia[0]
-        }
-
-        return {
-          key:newsData.title,
-          title: newsData.title,
-          section: newsData.section,
-          author:newsData.byline,
-          imgSrc: media.url,
-          imgCaption: media.caption,
-          brief: newsData.abstract,
-          link: newsData.url
-        }
-      })
-
-      setArticles(sortedNewsData)       
-    })
-    
-  }, [category])
-
-  // console.log("I am the main article", articles)
-    
-  
-  const handleCategoryChange = (category) => {
-    setCategory(category)
-  }
-  
   return (
+    // <div className={light ? 'light' : 'dark'}>
     <div className="wrapper">
-      <Header />    
+      <Header />  
 
       <section className="mainSectionContainer">
-        
-        <CategorySelector 
-          home={() => { handleCategoryChange('home') }}
-          arts={() => { handleCategoryChange('arts') }}
-          books={() => { handleCategoryChange('books') }}
-          business={() => { handleCategoryChange('business') }}
-          fashion={() => { handleCategoryChange('fashion') }}
-          food={() => { handleCategoryChange('food') }}
-          health={() => { handleCategoryChange('health') }}
-          movies={() => { handleCategoryChange('movies') }}
-          politics={() => { handleCategoryChange('politics') }}
-          science={() => { handleCategoryChange('science') }}
-          sports={() => { handleCategoryChange('sports') }}
-          theater={() => { handleCategoryChange('theater') }}
-          travel={() => { handleCategoryChange('travel') }}
-          world={() => { handleCategoryChange('world') }}/>
-        
-        <ul className="articles">
-        <h3>Top Stories</h3>
-          {
-            articles.map((article)=>{
-              return <Article key={article.key} title={article.title} section={article.section} author={article.author} imgSrc={article.imgSrc} imgCaption={article.imgCaption} brief={article.brief} link={article.link} />
-            })
-          }
-        </ul>
-        <Trending category={category} />
+        <Articles/>
+        <Trending/>
       </section>    
     </div>
+    // </div>
 
   );
 }
 
 export default App;
-
-
 
 // NEWS APP - 
 

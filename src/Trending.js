@@ -49,11 +49,13 @@ const Trending = () => {
     return(
         <section className="trending">
             <h4>Trending</h4>
+
             <div className="trendingButtons">
                 <button onClick={()=>{handlePeriodChange(1)}}>Today</button>
                 <button onClick={()=>{handlePeriodChange(7)}}>Week</button>
                 <button onClick={()=>{handlePeriodChange(30)}}>Month</button>
             </div>
+
             <div className="trendingContainer">
                 <h2>{trending.title}</h2>
                 <p>{trending.byline}</p>
@@ -64,6 +66,7 @@ const Trending = () => {
                     <a href={trending.url}>Read Here</a>
                 </div>
             </div>
+            
         </section>
     )
 }
