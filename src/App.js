@@ -2,7 +2,6 @@ import './App.css';
 import Header from './Header.js';
 import Articles from './Articles.js'
 import Trending from './Trending';
-import {FaLightbulb} from 'react-icons/fa'
 
 
 function App() {

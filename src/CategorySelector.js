@@ -72,9 +72,10 @@ const CategorySelector = ({ changeCategory }) => {
                 {open &&
                     <div className="smallScreen"> 
                         {
-                        categories.map(({ category, label }) => {                            
+                        categories.map(({ category, label }) => 
+                        {                            
                             if (category === 'home') {
-                                category = ""
+                                return "";
                             }
                             else {return <button key={`button-${category}`} onClick={() => { changeCategory(category) }}>{label}</button>}
                         })
