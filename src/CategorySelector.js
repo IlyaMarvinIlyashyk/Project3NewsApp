@@ -9,7 +9,12 @@ const CategorySelector = ({ home, arts, books, business, fashion, food, health, 
         setOpen(!open)
     }
 
-    console.log(open)
+    const clickTopHandle = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
 
     return (
         <Fragment>
@@ -30,7 +35,7 @@ const CategorySelector = ({ home, arts, books, business, fashion, food, health, 
                     <button onClick={sports}>Sports</button>
                     <button onClick={travel}>Travel</button>
                     <button onClick={world}>World</button>
-                    <a href="#top">UP</a>
+                    <button onClick={clickTopHandle}>UP</button>
                 </div>
 
                 {/*  SMALL SCREENS (max-width: 800px) */}
@@ -44,8 +49,7 @@ const CategorySelector = ({ home, arts, books, business, fashion, food, health, 
 
                 {open &&
                     <div className="smallScreen"> 
-                        <h4>Categories</h4>
-                        <button onClick={home}>All</button>
+                        {/* <h4>Categories</h4> */}
                         <button onClick={arts}>Arts</button>
                         <button onClick={books}>Books</button>
                         <button onClick={business}>Business</button>
@@ -58,7 +62,6 @@ const CategorySelector = ({ home, arts, books, business, fashion, food, health, 
                         <button onClick={sports}>Sports</button>
                         <button onClick={travel}>Travel</button>
                         <button onClick={world}>World</button>
-                        <a href="#top">UP</a>  
                     </div>
                 }
 

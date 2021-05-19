@@ -6,15 +6,9 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
-/* MAKE SURE TO REMOVE CLEAR FIX AND SR IF NOT IN USE */
-
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;1,500&display=swap');
 
 /* GENERAL */
-
-/* main background-color: #000E4C  */
-/* color: #59D1C0 */
-/* secondary */
 
 html {
     font-size: 62.5%;
@@ -163,17 +157,21 @@ h1 {
   flex-direction: column;
 }
 
-.buttonContainer a {
+.buttonContainer button:last-of-type {
   color: #ffffff;
+  background-color: #000000;
   text-align: center;
-  text-decoration: none;
 }
 
-.smallScreen {
-  display: none;
+.buttonContainer button:last-of-type:hover {
+  color: #000000;
+  background-color: #ffffff;
 }
 
-.smallScreenSelector {
+.smallScreen, 
+.smallScreenNav,
+.smallScreenSelector
+ {
   display: none;
 }
 
@@ -225,9 +223,7 @@ h1 {
   font-size: 2rem;
   padding: 1rem 2rem;
   font-weight: bold;
-  cursor: pointer;
   border: none;
-  font-family: 'Newsreader', serif;
   font-size: 2.25rem;
 }
 
@@ -309,8 +305,27 @@ h1 {
 
   .smallScreen {
     display: flex;
-    flex-direction: column;
-    margin-left: 1vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin: 0;
+    justify-content: baseline;
+    align-items: center;
+    border-bottom: 0.3rem solid black;
+    background-color: white;
+  }
+
+  .smallScreen button {
+    border: none;
+    text-decoration: none;
+    font-size: 2rem;
+    width: 33%;
+  }
+
+
+  .smallScreen button:last-of-type {
+    background-color: #ffffff;
+    color: #000000;
   }
 
   .smallScreenSelector {
@@ -322,6 +337,7 @@ h1 {
 
   .smallScreenNav h1 {
     font-size: calc(1rem + 3vw);
+    padding-left: 1rem;
   }
 
   .smallScreenNav {
@@ -339,7 +355,7 @@ h1 {
   }
 
   .trending {
-    margin-top: calc(2rem + 10.5vw);
+    margin-top: calc(2rem + 10.25vw);
     position: unset;
     height: unset;
     width: unset;
