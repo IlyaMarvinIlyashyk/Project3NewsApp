@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react"
 import { RiMenuFill } from 'react-icons/ri'
 
-const CategorySelector = ({ changeCategory, lightSwitch, lightSwitchName}) => {
+const CategorySelector = ({ changeCategory }) => {
 
     // state for hamburger nav
 
