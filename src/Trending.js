@@ -52,7 +52,7 @@ const Trending = () => {
     const trendingPeriod = [
             {period: 1, label: "Today"},
             {period: 7, label: "Week"},
-            {period: 39, label: "Month"},
+            {period: 30, label: "Month"},
         ]
 
     // handling change in period

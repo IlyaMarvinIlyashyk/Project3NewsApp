@@ -1,7 +1,8 @@
 import { Fragment, useState } from "react"
 import { RiMenuFill } from 'react-icons/ri'
+import { FaArrowAltCircleUp, FaLightbulb } from 'react-icons/fa'
 
-const CategorySelector = ({ changeCategory }) => {
+const CategorySelector = ({ changeCategory, handleLight}) => {
 
     // state for hamburger nav
 
@@ -53,7 +54,8 @@ const CategorySelector = ({ changeCategory }) => {
                             return <button key={`button-${category}`} onClick={() => { changeCategory(category) }}>{label}</button>
                         })
                     }
-                    <button onClick={clickTopHandle}>UP</button>
+                    <button onClick={clickTopHandle}><FaArrowAltCircleUp /></button>
+                    <button onClick={handleLight}><FaLightbulb/></button>
                 </div>
 
                 {/*  for screen sizes under 800px */}
@@ -77,9 +79,15 @@ const CategorySelector = ({ changeCategory }) => {
                             if (category === 'home') {
                                 return "";
                             }
-                            else {return <button key={`button-${category}`} onClick={() => { changeCategory(category) }}>{label}</button>}
+
+                            else
+                            {
+                                return <button key={`button-${category}`} onClick={() => { changeCategory(category) }}>{label}</button>}
                         })
                         }
+                        <button onClick={() => { changeCategory('home') }}>All</button>
+                        <button onClick={clickTopHandle}><FaArrowAltCircleUp /></button>
+                        <button onClick={handleLight}><FaLightbulb /></button>
                     </div>
                 }
 

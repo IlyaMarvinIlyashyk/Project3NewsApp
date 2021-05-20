@@ -29,17 +29,17 @@ button {
   padding: 1rem 2rem;
   font-weight: bold;
   cursor: pointer;
-  border-right: 0.3rem solid #000000;
-  border-left: 0.3rem solid #000000;
-  border-bottom: 0.3rem solid #000000;
+  border-right: 0.2rem solid #000000;
+  border-left: 0.2rem solid #000000;
+  border-bottom: 0.2rem solid #000000;
   border-top: none;
-  font-family: 'Newsreader', serif;
-  font-size: 2.25rem;
+  font-family: 'Alegreya', serif;
+  font-size: 2rem;
 }
 
 button:hover {
   color: #ffffff;
-  background-color: #000000;
+  background-color: #666666;
   transition: 0.3s all ease;
 }
 
@@ -64,14 +64,12 @@ h2 {
 a {
   font-weight: bold;
   color:#000000;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 a:hover,
 a:focus {
-  background-color: #000000;
-  color: #ffffff;
-  padding: 1rem;
+  color: #666666;
   transition: 0.3s all ease;
 }
 
@@ -80,19 +78,24 @@ a:focus {
 header {
   text-align: center;
   padding: calc(1.5rem + 1vw) 0 calc(2.5rem + 1vw);
-  border-bottom: 0.3rem solid #000000;
-  font-family: 'Newsreader', serif;
+  border-bottom: 0.2rem solid #000000;
 }
 
 header h4 {
-  font-size: calc(1rem + 0.5vw);
+  font-size: calc(1rem + 0.75vw);
   font-style: italic;
+  font-weight: lighter;
+  color: #666666;
 }
 
 h1 {
   font-size: calc(5rem + 3vw);
   width: 97.5%;
-  font-family: 'Newsreader', serif;
+}
+
+.mainSectionContainer {
+  display: flex;
+  height: 100%
 }
 
 /* ARTICLES */
@@ -115,7 +118,7 @@ h1 {
   grid-column-start: 1;
   grid-column-end: 4;
   text-align: center;
-  font-size: calc(2rem + 1.5vw);
+  font-size: calc(2rem + 1vw);
   padding: 0.5vw 0 1.5vw;
 }
 
@@ -137,6 +140,7 @@ h1 {
 .articles span,
 .trendingContainer p:first-of-type  {
   font-style: italic;
+  font-size: 1.8rem;
 }
 
 /* CATEGORY BUTTONS */
@@ -157,17 +161,6 @@ h1 {
   flex-direction: column;
 }
 
-.buttonContainer button:last-of-type {
-  color: #ffffff;
-  background-color: #000000;
-  text-align: center;
-}
-
-.buttonContainer button:last-of-type:hover {
-  color: #000000;
-  background-color: #ffffff;
-}
-
 .smallScreen, 
 .smallScreenNav,
 .smallScreenSelector
@@ -182,12 +175,10 @@ h1 {
   padding: calc(0.75rem + 0.5vw) 0;
   background-color: #000000;
   text-transform: uppercase;
+  letter-spacing: 0.075rem;
 }
 
-.mainSectionContainer {
-  display: flex;
-  height: 100%
-}
+/* TRENDING  */
 
 .trending {
   position: sticky;
@@ -198,7 +189,7 @@ h1 {
 }
 
 .trendingContainer {
-  border: 0.3rem solid #000000;
+  border: 0.2rem solid #000000;
   padding: 2rem 1.5vw;
 }
 
@@ -214,31 +205,37 @@ h1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border-right: 0.3rem solid #000000;
-  border-left: 0.3rem solid #000000;
+  border-right: 0.2rem solid #000000;
+  border-left: 0.2rem solid #000000;
 }
 
 .trendingButtons button {
   flex-grow: 1;
-  font-size: 2rem;
+  font-size: 2.25rem;
+  letter-spacing: 0.1rem;
   padding: 1rem 2rem;
   font-weight: bold;
   border: none;
-  font-size: 2.25rem;
+  font-size: 2rem;
 }
 
-/* LIGHT/ DARK MODE */
+/* LIGHT/ DARK MODE */ 
+/* STILL A WORK IN PROGRESS */
 
 .light {
   background-color: #ffffff;
-  color: #181818;
-
+  color: #000000;
 }
 
 .dark {
   background-color: #181818;
   color: #ffffff;
 }
+
+/* MEDIA QUERIES */
+
+/* MAX: 1300px */
+
 @media (max-width: 1300px) {
   
   .articles {
@@ -251,6 +248,8 @@ h1 {
   
 }
 
+/* MAX: 800px */
+
 @media (max-width: 800px) {
 
   /* GENERAL */
@@ -262,7 +261,13 @@ h1 {
   .wrapper {
     width: 100%;
   }
-  
+
+  .mainSectionContainer {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+ 
   /* ARTICLES */
 
    .articles {
@@ -311,29 +316,32 @@ h1 {
     margin: 0;
     justify-content: baseline;
     align-items: center;
-    border-bottom: 0.3rem solid black;
+    border-bottom: 0.2rem solid black;
     background-color: white;
   }
 
   .smallScreen button {
     border: none;
-    text-decoration: none;
     font-size: 2rem;
-    width: 33%;
+    margin: 0 auto;
+    width: 33.33%;
+    height: 8rem;
   }
 
-
-  .smallScreen button:last-of-type {
-    background-color: #ffffff;
-    color: #000000;
+  .smallScreen button:hover {
+    color: #666666;
+    background-color: unset;
+    text-decoration: underline;
   }
-
+  
   .smallScreenSelector {
     border: none;
     background: transparent;
-    height: calc(2rem + 10vw);
+    height: calc(2rem + 11vw);
     color: #ffffff;
   }
+
+  /* title replacement */
 
   .smallScreenNav h1 {
     font-size: calc(1rem + 3vw);
@@ -348,14 +356,10 @@ h1 {
     align-items: center;
   }
 
-  .mainSectionContainer {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-  }
+  /* TRENDING */
 
   .trending {
-    margin-top: calc(2rem + 10.25vw);
+    margin-top: calc(2rem + 11vw);
     position: unset;
     height: unset;
     width: unset;
@@ -367,7 +371,8 @@ h1 {
 
   .trending h4 {
     width: 100vw;
-    font-size: calc(2rem + 1.5vw) ;
+    font-size: calc(2rem + 1.5vw);
+    border-top: 0.2rem#666666 solid;
   }
 
   .trendingContainer {
@@ -377,37 +382,18 @@ h1 {
   .trendingButtons {
     width: 100vw;
     border: none;
-    border-bottom: 0.3rem solid black;
+    border-bottom: 0.2rem solid black;
   }
 
-  .trendingButtons button {
-    border-right: 0.3rem solid black;
+  .trendingButtons button:hover {
+    color: #666666;
+    background-color: unset;
+    text-decoration: underline;
   }
-
-  .trendingButtons button:last-of-type {
-    border-right: none;
-  }
-
-
-
 
   .buttonContainer {
     height: 0;
     position: fixed;
     top: 0;
   }
-
-
-
-  /* .trending {
-    grid-row-start: 3;
-    grid-row-end: 1;
-    grid-column-end: 3;
-    position: unset;
-    display: flex;
-    flex-direction: row;  
-  }  */
-
-
-  
 }

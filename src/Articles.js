@@ -2,12 +2,12 @@ import CategorySelector from './CategorySelector.js'
 import {Fragment, useEffect, useState} from 'react'
 import Axios from 'axios'
 
-const Articles = () => {
+const Articles = ({handleLight}) => {
     
     // state for category
 
     const [category, setCategory] = useState('home')
-
+    
     // state for articles 
     
     const [articles, setArticles] = useState([])
@@ -96,9 +96,6 @@ const Articles = () => {
 
     }, [category])
 
-
-    // const [light, setLight] = useState(true)
-
     // function to change category
 
     const handleCategoryChange = (category) => {
@@ -110,10 +107,7 @@ const Articles = () => {
             
         <CategorySelector 
           changeCategory = {handleCategoryChange} 
-        //   lightSwitch={()=> {setLight(!light)}}
-        //   lightSwitchName={light 
-        //   ? <FaLightbulb className='light' /> 
-        //   : <FaLightbulb className='dark' />}
+          handleLight = {handleLight}
           />
 
         <ul className="articles">
