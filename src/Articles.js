@@ -44,18 +44,31 @@ const Articles = ({handleLight, light}) => {
             return randomTwoArticles;
         };
 
+        // randomize the array
+        
         const randomArticleArray = randomizer(jsonResponse.data.results)
 
+        // this was a toughy...articles would duplicate
+        // here's the fix
+        // shout-out to Nick Taylor: 
+        // https://dev.to/mshin1995/back-to-basics-removing-duplicates-from-an-array-55he
+        
+        const duplicateFix = (array) =>{
+            return [...new Set(array)]
+        }
+        
+        const filteredArray = duplicateFix(randomArticleArray);
+        
         // Assigning a uniquely generated key for the articles
         // This is done by injecting an ID key into the objects within the new array
-
-        const arrayWithRandomIds = randomArticleArray.map((article, index)=>{
+        
+        const addingIds = filteredArray.map((article, index)=>{
             return {...article, id: index}
         })
-
+        
         // Cleaning up the array
-                
-        const sortedNewsData = arrayWithRandomIds.map((newsData)=>{
+        
+        const sortedNewsData = addingIds.map((newsData)=>{
 
             // error handling for when the media is undefined/ loads too slowly 
             
@@ -95,6 +108,7 @@ const Articles = ({handleLight, light}) => {
         // dependant on "category" change
 
     }, [category])
+
 
     // function to change category
 
