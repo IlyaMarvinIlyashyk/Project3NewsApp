@@ -10,7 +10,7 @@ const CategorySelector = ({ changeCategory, handleLight}) => {
 
     // hamburger nav open/close
 
-    const handleClick = () => {
+    const handleNavClick = () => {
         setOpen(!open)
     }
 
@@ -64,7 +64,7 @@ const CategorySelector = ({ changeCategory, handleLight}) => {
 
                     {/* navbar open/close */}
 
-                    <button className="smallScreenSelector" onClick={handleClick}><RiMenuFill /></button>
+                    <button className="smallScreenSelector" onClick={handleNavClick}><RiMenuFill /></button>
                     <h1>The News App</h1>
 
                 </div>

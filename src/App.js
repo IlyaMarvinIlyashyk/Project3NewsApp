@@ -21,8 +21,8 @@ function App() {
       <Header />  
 
       <section className="mainSectionContainer">
-        <Articles handleLight={()=>{handleLight()}}/>
-        <Trending/>
+        <Articles handleLight={()=>{handleLight()}} light={light}/>
+        <Trending light={light}/>
       </section>    
     </div>
     </div>

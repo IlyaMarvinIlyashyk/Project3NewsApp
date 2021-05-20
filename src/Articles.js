@@ -2,7 +2,7 @@ import CategorySelector from './CategorySelector.js'
 import {Fragment, useEffect, useState} from 'react'
 import Axios from 'axios'
 
-const Articles = ({handleLight}) => {
+const Articles = ({handleLight, light}) => {
     
     // state for category
 
@@ -121,9 +121,9 @@ const Articles = ({handleLight}) => {
                     <li key={key}>
                         {imgSrc && <img src={imgSrc} alt={imgCaption}/>}
                         <h2>{title}</h2>
-                        <span>{author}</span>
+                        <p>{author}</p>
                         <p>{brief}</p>
-                        <a href={link}>Read Full Story</a>
+                        { light ? <a href={link}>Read Full Story</a> : <a href={link} className={'articlesLightChange'}>Read Full Story</a>}
                     </li> )
                     })
                 }

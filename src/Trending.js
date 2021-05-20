@@ -1,7 +1,7 @@
 import Axios from "axios"
 import { useEffect, useState } from "react"
 
-const Trending = () => {
+const Trending = ({light}) => {
 
     // state for trending
 
@@ -78,9 +78,9 @@ const Trending = () => {
                 {trendingMedia && <img src={trendingMedia} alt={trendingCaption
                 }/> }
                 <p>{trending.abstract}</p>
-                <div className="anchorTrending">
-                    <a href={trending.url}>Read Here</a>
-                </div>
+                < div className="anchorTrending" >
+                    {light ? <a href={trending.url} > Read Here</a > : <a href={trending.url} className="trendingLightChange">Read Here</a>}
+                </div >
             </div>
             
         </section>

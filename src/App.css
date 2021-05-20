@@ -118,7 +118,7 @@ h1 {
   grid-column-start: 1;
   grid-column-end: 4;
   text-align: center;
-  font-size: calc(2rem + 1vw);
+  font-size: calc(2rem + 0.75vw);
   padding: 0.5vw 0 1.5vw;
 }
 
@@ -131,16 +131,28 @@ h1 {
   align-content: space-between;
 }
 
-.articles p {
+.articles a {
+  width: 100%;
+}
+
+.articles p:last-of-type {
   text-align: left;
   font-size: 2rem;
   margin: 1rem 0;
 }
 
-.articles span,
+.articles p:first-of-type {
+  margin: 0.5rem 0;
+}
+
+.articles p:first-of-type,
 .trendingContainer p:first-of-type  {
   font-style: italic;
   font-size: 1.8rem;
+}
+
+.articlesLightChange {
+  color: white;
 }
 
 /* CATEGORY BUTTONS */
@@ -219,6 +231,10 @@ h1 {
   font-size: 2rem;
 }
 
+.trendingLightChange {
+    color: #ffffff;
+  }
+
 /* LIGHT/ DARK MODE */ 
 /* STILL A WORK IN PROGRESS */
 
@@ -285,7 +301,7 @@ h1 {
   }
 
   .articles li a {
-    margin: 0 auto;
+    text-align: center;
   }
 
   .articles h3 {
