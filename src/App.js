@@ -29,7 +29,7 @@ function App() {
       
       <footer>
         <p>
-          Made at <a href="https://junocollege.com/">Juno College</a>, using the New York Times API
+          Made at <a href="https://junocollege.com/">Juno College</a> by Ilya Marvin Ilyasky, using the New York Times API
       </p>
       
        </footer>
